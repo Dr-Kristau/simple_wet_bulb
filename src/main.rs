@@ -85,37 +85,29 @@ fn main() -> Result<()> {
     let heat_index_f = calc_heat_index(temp_f, opt.humid);
     let dew_point_c = calc_dew_point(temp_c, opt.humid);
     let mut stdout = StandardStream::stdout(ColorChoice::Always);
+    let textwbt = format!("wet-bulb temperature: {:.1}ºC, {:.1}ºF", wet_bulb_c, wet_bulb_f);
+    let texthi = format!("heat index: {:.1}ºC, {:.1}ºF", far_to_celc(heat_index_f), heat_index_f);
+    let textdp = format!("dew point: {:.1}ºC, {:.1}ºF", dew_point_c, celc_to_far(dew_point_c));
 
     if wet_bulb_f <= 80.0 {
         stdout.set_color(ColorSpec::new().set_fg(Some(Color::White)))?;
-        println!("wet-bulb temperature: {:.1}ºC, {:.1}ºF", wet_bulb_c, wet_bulb_f);
-        println!("heat index: {:.1}ºC, {:.1}ºF", far_to_celc(heat_index_f), heat_index_f);
-        println!("dew point: {:.1}ºC, {:.1}ºF", dew_point_c, celc_to_far(dew_point_c));
     }
     else if wet_bulb_f <= 85.0 {
         stdout.set_color(ColorSpec::new().set_fg(Some(Color::Green)))?;
-        println!("wet-bulb temperature: {:.1}ºC, {:.1}ºF", wet_bulb_c, wet_bulb_f);
-        println!("heat index: {:.1}ºC, {:.1}ºF", far_to_celc(heat_index_f), heat_index_f);
-        println!("dew point: {:.1}ºC, {:.1}ºF", dew_point_c, celc_to_far(dew_point_c));
     }
     else if wet_bulb_f <= 88.0 {
         stdout.set_color(ColorSpec::new().set_fg(Some(Color::Yellow)))?;
-        println!("wet-bulb temperature: {:.1}ºC, {:.1}ºF", wet_bulb_c, wet_bulb_f);
-        println!("heat index: {:.1}ºC, {:.1}ºF", far_to_celc(heat_index_f), heat_index_f);
-        println!("dew point: {:.1}ºC, {:.1}ºF", dew_point_c, celc_to_far(dew_point_c));
     }
     else if wet_bulb_f <= 90.0 {
         stdout.set_color(ColorSpec::new().set_fg(Some(Color::Red)))?;
-        println!("wet-bulb temperature: {:.1}ºC, {:.1}ºF", wet_bulb_c, wet_bulb_f);
-        println!("heat index: {:.1}ºC, {:.1}ºF", far_to_celc(heat_index_f), heat_index_f);
-        println!("dew point: {:.1}ºC, {:.1}ºF", dew_point_c, celc_to_far(dew_point_c));
     }
     else if wet_bulb_f > 90.0 {
         stdout.set_color(ColorSpec::new().set_fg(Some(Color::Blue)))?;
-        println!("wet-bulb temperature: {:.1}ºC, {:.1}ºF", wet_bulb_c, wet_bulb_f);
-        println!("heat index: {:.1}ºC, {:.1}ºF", far_to_celc(heat_index_f), heat_index_f);
-        println!("dew point: {:.1}ºC, {:.1}ºF", dew_point_c, celc_to_far(dew_point_c));
     }
+
+    println!("{}", textwbt);
+    println!("{}", texthi);
+    println!("{}", textdp);
 
     stdout.reset()?;
 
