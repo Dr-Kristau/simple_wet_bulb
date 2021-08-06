@@ -1,2 +1,2 @@
 # simple_wet_bulb
-Port of SimpleWetBulb to Rust
+Port of [SimpleWetBulb](https://github.com/Dr-Kristau/SimpleWetBulb#readme) to Rust

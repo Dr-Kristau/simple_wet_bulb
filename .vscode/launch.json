@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'simple_wet_bulb'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=simple_wet_bulb",
+                    "--package=simple_wet_bulb"
+                ],
+                "filter": {
+                    "name": "simple_wet_bulb",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--temp=102",
+                "--humid=40",
+                "--input=ºF"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'simple_wet_bulb'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=simple_wet_bulb",
+                    "--package=simple_wet_bulb"
+                ],
+                "filter": {
+                    "name": "simple_wet_bulb",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
